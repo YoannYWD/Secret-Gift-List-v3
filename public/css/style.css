@@ -1,0 +1,351 @@
+/*
+COLORS
+- DARK BLUE : #161B40
+- BLUE : #43BEE5
+- RED : #F40058
+- YELLOW : #EFA500
+- GREEN : #41B853
+- WHITE : #FFFFFF
+
+
+FONTS
+
+
+INDEX
+- IMPORTS
+- GENERAL
+- BOUTONS
+- NAVBAR
+- HOME PAGE
+- PROFILE PAGE
+- GIFTS PAGE
+- COMMENTS PAGE
+
+
+- FOOTER
+- MEDIA QUERIES
+
+*/
+
+/* IMPORTS */
+@font-face {
+    font-family: 'Neutra';
+    src: url('/css/fonts/neutra/Neutra Text Book.otf');
+}
+@font-face {
+    font-family: 'NeutraBold';
+    src: url('/css/fonts/neutra/Neutra-Text-TF-Light-SC-Demi_32158.ttf');
+}
+@font-face {
+    font-family: 'NeutraLight';
+    src: url('/css/fonts/neutra/Neutra-Text-Light_32131.ttf');
+}
+@font-face {
+    font-family: 'HarrietBold';
+    src: url('/css/fonts/harriet/harrietbold.otf');
+}
+
+
+
+/* GENERAL */
+
+body {
+    background-color: #161B40;
+    font-family: HarrietBold, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+}
+
+span.blue {
+    color: #43BEE5;
+}
+span.red {
+    color:#F40058;
+}
+span.green {
+    color:#41B853;
+}
+span.yellow {
+    color:#EFA500;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: Neutra, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: NeutraBold, Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: HarrietBold, Arial, Helvetica, sans-serif;
+}
+p.intro {
+    color: #FFFFFF;
+    font-size: 2em;
+}
+p.small {
+    font-size: 0.8em;
+}
+p.extraSmall {
+    font-size: 0.7em;
+}
+
+
+input {
+    font-family: HarrietBold, Arial, Helvetica, sans-serif;
+    color: #161B40;
+}
+
+p.introSmall {
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+.alert-success {
+    color: #FFFFFF;
+    background-color: #41B853;
+    border: none;
+}
+.alert-danger {
+    color: #FFFFFF;
+    background-color: #F40058;
+    border: none;
+}
+
+
+
+/* BOUTONS */
+
+button.btnDarkBlue {
+    border: 2px solid #161B40;
+    font-style: HarrietBold, Arial, Helvetica, sans-serif;;
+    color: #161B40;
+}
+button.btnDarkBlue:hover {
+    background-color: #161B40;
+    color: #FFFFFF;
+}
+
+button.btnGreen {
+    border: 2px solid #41B853;
+    font-style: HarrietBold, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+}
+button.btnGreen:hover {
+    background-color: #41B853;
+    color: #FFFFFF;
+}
+
+button.btnRed {
+    border: 2px solid #F40058;
+    font-style: HarrietBold, Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+}
+button.btnRed:hover {
+    background-color: #F40058;
+    color: #FFFFFF;
+}
+
+button.btnBlue {
+    border: 2px solid #43BEE5;
+    font-style: HarrietBold, Arial, Helvetica, sans-serif;
+    color: #43BEE5;
+}
+button.btnBlue:hover {
+    background-color: #43BEE5;
+    color: #FFFFFF;
+}
+
+button.btnEdit {
+    border: none;
+    background-color: transparent;
+    color: #41B853;
+    transition: 0.5s;
+}
+button.btnEdit:hover {
+    background-color: #41B853;
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+
+button.btnDelete {
+    border: none;
+    background-color: transparent;
+    color: #F40058;
+    transition: 0.5s;
+}
+button.btnDelete:hover {
+    background-color: #F40058;
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+
+button.btnEditSmall {
+    border: none;
+    background-color: transparent;
+    color: #41B853;
+    transition: 0.5s;
+    font-size: 0.8em;
+}
+button.btnEditSmall:hover {
+    background-color: #41B853;
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+
+button.btnDeleteSmall {
+    border: none;
+    background-color: transparent;
+    color: #F40058;
+    transition: 0.5s;
+    font-size: 0.8em;
+}
+button.btnDeleteSmall:hover {
+    background-color: #F40058;
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+button.btnEditExtraSmall {
+    border: none;
+    background-color: transparent;
+    color: #41B853;
+    transition: 0.5s;
+    font-size: 0.7em;
+}
+button.btnEditExtraSmall:hover {
+    background-color: #41B853;
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+
+button.btnDeleteExtraSmall {
+    border: none;
+    background-color: transparent;
+    color: #F40058;
+    transition: 0.5s;
+    font-size: 0.7em;
+}
+button.btnDeleteExtraSmall:hover {
+    background-color: #F40058;
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+
+
+
+/* NAVBAR */
+
+nav {
+    background-color: #161B40;
+    color: #FFFFFF;
+    font-family: Neutra, Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+}
+
+nav a {
+    color: #FFFFFF!important;
+}
+
+nav a:hover {
+    color: #43BEE5!important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+}
+
+
+
+/* HOMEPAGE */
+
+.headPage img {
+    height: 400px;
+}
+
+.headPage h1 {
+    font-size: 6rem;
+}
+
+.cardIndex img {
+    height: 150px;
+    border-radius: 50%;
+}
+
+.card h5 {
+    font-family: NeutraBold, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    color: #161B40;
+}
+
+.cardIndex {
+    border: none;
+    transition: 0.5s;
+}
+.cardIndex:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+
+
+
+/* GIFTS PAGE */
+.giftCard p {
+    color: #161B40;
+}
+.giftCard img {
+    height: 250px;
+    width: auto;
+}
+
+
+
+/* PROFILE PAGE */
+.profileContainer p {
+    font-style: HarrietBold, Arial, Helvetica, sans-serif;;
+    color: #FFFFFF;
+}
+table {
+    background-color: #FFFFFF;
+}
+
+
+/* COMMENTS PAGE */
+.commentGiftCard p {
+    color: #161B40;
+}
+.card-footer{
+    position:absolute;
+    bottom:0;
+    background-color: #FFFFFF;
+}
+.comment p {
+    color: #161B40;
+}
+.modal-content {
+    background-color: #161B40;
+}
+
+
+
+/* FOOTER */
+footer p {
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 500px) {
+    .headPage img {
+        height: 140px;
+
+    }
+  }
