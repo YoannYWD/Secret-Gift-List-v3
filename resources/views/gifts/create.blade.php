@@ -1,6 +1,9 @@
 @extends('app')
 
-@section('title', 'Liste des cadeaux')
+@section('title')
+Cadeaux pour {{$grantee[0]->nickname}}
+@endsection
+
 @section('description', "Proposez le cadeaux que vous souhaitez offrir, à l'utilisateur que vous avez choisi. Découvrez sa wishlist et les cadeaux déjà proposés !")
 
 @section('content')
@@ -73,7 +76,7 @@
         @foreach($gifts as $gift)
         <div class="col-md-4 mt-3 mb-2">
             <div class="card giftCard text-center">
-                <img src="{{$gift->image}}" class="card-img-top" alt="Image de {{$gift->name}}">
+                <img src="{{$gift->image}}" class="card-img-top img-fluid w-auto" alt="Image de {{$gift->name}}">
                 <div class="card-body mb-5">
                     <h5 class="card-title">{{$gift->name}}</h5>
                     <p class="card-text"><span class="blue">{{$gift->price}} €</span></p>

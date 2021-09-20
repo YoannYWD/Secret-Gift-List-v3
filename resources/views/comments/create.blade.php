@@ -1,6 +1,8 @@
 @extends('app')
 
-@section('title', 'Commentaires')
+@section('title')
+Commentaires {{$gift[0]->name}}
+@endsection
 @section('description', "Discutez autour du cadeaux que vous souhaitez offrir, à l'utilisateur que vous avez choisi. Optimisez vos chances de le rendre heureux !")
 
 
