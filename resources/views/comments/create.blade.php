@@ -9,34 +9,37 @@ Commentaires {{$gift[0]->name}}
 @section('content')
 
 <!-- BOUTON RETOUR PAGE LISTE DES CADEAUX DU BENEFICIAIRE SELECTIONNE -->
-<div class="container">
-    <div class="row text-center">
-        <form action="{{route('accueil.create')}}" method="GET">
-            @csrf
-            <input type="hidden" name="for_user_id" value="{{$gift[0]->for_user_id}}">
-            <button type="submit" class="btn btnGreen">Retourner à la liste</button>
-        </form>
-        <p class="intro mt-5">Tu es arrivé dans l'espace <span class="yellow">salon</span>. C'est ici que se décident les plus beaux <span class="green">secrets</span> qui raviront les chanceux !</p>
+<div class="container-fluid white">
+    <div class="container py-5">
+        <div class="row text-center">
+            <form action="{{route('accueil.create')}}" method="GET">
+                @csrf
+                <input type="hidden" name="for_user_id" value="{{$gift[0]->for_user_id}}">
+                <button type="submit" class="btn btnGreenBgWhite">Retourner à la liste</button>
+            </form>
+            <p class="intro mt-5">Tu es arrivé dans l'espace <span class="yellow">salon</span>. C'est ici que se décident les plus beaux <span class="green">secrets</span> qui raviront les chanceux !</p>
+        </div>
     </div>
 </div>
 
 <!-- AFFICHAGE DU CADEAU A COMMENTER -->
-<div class="container">
-    <div class="row mt-5 mb-4">
-        <div class="col-10 offset-1">
+<div class="container darkBlue py-5">
+    <div class="row mb-4">
+        <div class="col-12">
             <div class="card commentGiftCard">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="{{$gift[0]->image}}" class="card-img-top" alt="Image de {{$gift[0]->name}}" style="height: 18rem;">
+                    <div class="col-md-4">
+                        <div style="background-color: #161B40; background-image: url({{$gift[0]->image}}); background-size: contain; background-repeat: no-repeat; height: 300px; background-position: 50% 50%; border-top-left-radius: 3px; border-bottom-left-radius: 3px">
+                        </div>
                     </div>
-                    <div class="col-7">
+                    <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{$gift[0]->name}}</h5>
                             <p><span class="blue">{{$gift[0]->price}}€</span></p>
                             <p>{{$gift[0]->description}}</p>
                         </div>
                         <div class="card-footer">
-                            <p class="text-muted small mb-0"><img class="mr-3 rounded-circle me-2" src="{{$gift[0]->user_image}}" alt="Generic placeholder image" style="max-width:50px"><i class="far fa-user pe-1"></i>{{$gift[0]->user_nickname}}<i class="far fa-calendar-alt ps-3 pe-1"></i> {{ \Carbon\Carbon::parse($gift[0]->created_at)->translatedFormat('d F Y à H\hi') }}</p>
+                            <p class="text-muted small mb-0"><img class="mr-3 rounded-circle me-2" src="{{$gift[0]->user_image}}" alt="Generic placeholder image" style="max-width:30px">{{$gift[0]->user_nickname}}<i class="far fa-calendar-alt ps-3 pe-1"></i> {{ \Carbon\Carbon::parse($gift[0]->created_at)->translatedFormat('d F Y à H\hi') }}</p>
                             <p class="text-muted small mb-0">
                         </div>
                     </div>
@@ -50,24 +53,23 @@ Commentaires {{$gift[0]->name}}
     <!-- AFFICHAGE DES COMMENTAIRES / EDITION PAR MODAL -->
     <div class="row mb-1">
         @foreach($comments as $comment)
-        <div class="col-10 offset-1 mb-1">
+        <div class="col-12 mb-1">
             <div class="card comment">
                 <div class="row">
-                    <div class="col-1 d-flex align-self-center justify-content-center mt-1">
-                        <img class="mr-3 rounded-circle" src="{{$comment->user_image}}" alt="Generic placeholder image" style="max-width:50px">
+                    <div class="col-2 col-xl-1 d-flex align-self-center justify-content-center mt-1 comment">
+                        <img class="mr-3 rounded-circle" src="{{$comment->user_image}}" alt="Generic placeholder image" style="max-width:30px">
                     </div>
-                    <div class="col-11">
-                        <p class="mt-2">{{$comment->content}}</i></p>
-                        
+                    <div class="col-10 col-xl-11">
+                        <p class="mt-2">{{$comment->content}}</i></p>                       
                         <div class="row d-flex align-items-end">
-                            <div class="col-9">
-                                <p class="text-muted extraSmall mb-0"><i class="far fa-user pe-1"></i>{{$gift[0]->user_nickname}} <i class="far fa-calendar-alt ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($comment->created_at)->translatedFormat('d F Y à H\hi') }}</p>
+                            <div class="col-6 col-xl-10">
+                                <p class="text-muted extraSmall mb-0"><i class="far fa-user pe-1"></i>{{$comment->user_nickname}} <i class="far fa-clock ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</p>
                             </div>
                             @if($comment->user_id == auth()->id())
-                            <div class="col-1">
+                            <div class="col-3 col-xl-1 text-end">
                                 <button type="submit" class="btn btnEditExtraSmall py-0 px-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}">Modifier</button>                           
                             </div>
-                            <div class="col-1">
+                            <div class="col-3 col-xl-1 text-end">
                                 <form action="{{route('commentaires.destroy', $comment->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -106,27 +108,24 @@ Commentaires {{$gift[0]->name}}
             
         @endforeach
     </div>
-</div>
+
 
 <!-- AJOUTER UN COMMENTAIRE -->
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-10 offset-1">
+
+    <div class="row mt-2">
+        <div class="col-12">
             <form method="POST" action="{{route('commentaires.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                  <label>Votre commentaire</label>
+                  <label>Ton commentaire</label>
                   <textarea type="text" name="content" class="form-control" rows="3" placeholder="Lachez votre plus beau com'"></textarea>
                 </div>
                 <input type="hidden" value="{{$gift[0]->id}}" name="id">
-                <button type="submit" class="btn btnGreen">Enregistrer</button>
+                <button type="submit" class="btn btnGreenBgBlue">Enregistrer</button>
             </form>
         </div>
     </div>
 </div>
-
-
-
 
 
 

@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <!-- <a class="navbar-brand mr-auto" href="{{route('accueil.index')}}">SGL</a> -->
         <button class="navbar-toggler custom-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,10 +58,7 @@
     </div>
 </nav>
 
-<div class="container-fluid mt-5 mb-5 headPage text-center">
-    <!-- <div class="row">
-        <h1 class="text-center">SECRET <span class="blue">GIFT</span> LIST</h1>
-    </div> -->
+<div class="container mb-5 headPage text-center">
     <img src="/images/logo.png" alt="Logo">
 </div>
 
@@ -89,7 +86,7 @@
     </div>
 </div>
 
-<div class="container">
+<div>
     @yield("content")
 </div>
 

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,10 +16,10 @@ class Comment extends Model
 
     //Cardinalité
     public function users() {
-        return $this->belongsToMany(User::class, 'comments', 'user_id', 'posted_by_user_id');
+        return $this->belongsToMany(User::class, 'comments', 'user_id', 'gift_id');
     }
     public function gifts() {
-        return $this->belongsToMany(Gift::class, 'comments', 'gift_id', 'id');
+        return $this->belongsToMany(Gift::class, 'comments', 'gift_id', 'user_id');
     }
 }
 

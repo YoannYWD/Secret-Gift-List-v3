@@ -9,10 +9,17 @@ Profil de {{auth()->user()->nickname}}
 @section('content')
 
 <!-- FORMULAIRE MODIFICATION PROFIL-->
-<div class="container profileContainer">
+<div class="container-fluid white">
+    <div class="container py-5">
+        <div class="row">
+            <p class="intro">Tu peux ici <span class="red">modifier</span> toutes les informations que tu as <span class="green">enregistrées</span>. N'oublie surtout pas de compléter ta <span class="yellow">wishlist</span> pour aider ta famille !</p>
+        </div>
+    </div>
+</div>
+
+<div class="container darkBlue py-5">
     <div class="row mb-4">
-        <p class="intro">Tu peux ici <span class="red">modifier</span> toutes les informations que tu as <span class="green">enregistrées</span>. N'oublie surtout pas de compléter ta <span class="yellow">wishlist</span> pour aider ta famille !</p>
-        <div class="col-6 mt-5">
+        <div class="col-xl-6 mt-5">
             <p class="introSmall text-center">Tes <span class="blue">informations</span></p>
             <form action="{{route('mon-profil.update', auth()->id())}}" method="POST" enctype="multipart/form-data" class="mt-5 mb-4">
                 @csrf
@@ -105,12 +112,12 @@ Profil de {{auth()->user()->nickname}}
                 </div>
     
                 <div class="d-grid mt-5 mx-auto">
-                    <button type="submit" class="btn btnGreen"><p class="mb-0">Enregistrer les modifications</p></button>
+                    <button type="submit" class="btn btnGreenBgBlue"><p class="mb-0">Enregistrer les modifications</p></button>
                 </div>
             </form>
             
         </div>
-        <div class="col-6">
+        <div class="col-xl-6 mt-5">
             <p class="introSmall text-center mt-5">Liste des <span class="yellow">cadeaux</span> que tu as proposé</p>
             <table class="table">
                 <thead>
@@ -151,6 +158,7 @@ Profil de {{auth()->user()->nickname}}
         </div>
     </div>
 </div>
+
 
 
 

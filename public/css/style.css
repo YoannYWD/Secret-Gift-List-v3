@@ -52,6 +52,15 @@ INDEX
 body {
     background-color: #161B40;
     font-family: HarrietBold, Arial, Helvetica, sans-serif;
+}
+
+.white {
+    background-color: #FFFFFF;
+    color: #161B40;
+}
+
+.darkBlue {
+    background-color: #161B40;
     color: #FFFFFF;
 }
 
@@ -68,11 +77,14 @@ span.yellow {
     color:#EFA500;
 }
 
-h2, h3, h4, h5, h6 {
-    font-family: Neutra, Arial, Helvetica, sans-serif;
+h2, h3, h5, h6 {
+    font-family: NeutraBold, Arial, Helvetica, sans-serif;
     text-transform: uppercase;
 }
-
+h4 {
+    font-family: NeutraBold, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
 h1 {
     font-family: NeutraBold, Arial, Helvetica, sans-serif;
     font-size: 3em;
@@ -81,10 +93,13 @@ h1 {
 
 p {
     font-family: HarrietBold, Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
 }
 p.intro {
-    color: #FFFFFF;
     font-size: 2em;
+}
+p.introSmall {
+    font-size: 1.5em;
 }
 p.small {
     font-size: 0.8em;
@@ -99,10 +114,6 @@ input {
     color: #161B40;
 }
 
-p.introSmall {
-    color: #FFFFFF;
-    font-size: 1.5em;
-}
 
 .alert-success {
     color: #FFFFFF;
@@ -129,12 +140,21 @@ button.btnDarkBlue:hover {
     color: #FFFFFF;
 }
 
-button.btnGreen {
+button.btnGreenBgBlue {
     border: 2px solid #41B853;
     font-style: HarrietBold, Arial, Helvetica, sans-serif;
     color: #FFFFFF;
 }
-button.btnGreen:hover {
+button.btnGreenBgBlue:hover {
+    background-color: #41B853;
+    color: #FFFFFF;
+}
+button.btnGreenBgWhite {
+    border: 2px solid #41B853;
+    font-style: HarrietBold, Arial, Helvetica, sans-serif;
+    color: #161B40;
+}
+button.btnGreenBgWhite:hover {
     background-color: #41B853;
     color: #FFFFFF;
 }
@@ -264,6 +284,10 @@ nav a:hover {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
 }
 
+.headPage {
+    margin-top: 130px!important;
+}
+
 
 
 /* HOMEPAGE */
@@ -300,38 +324,54 @@ nav a:hover {
 
 
 /* GIFTS PAGE */
+.giftCard {
+    border-color: #43BEE5;
+}
+
 .giftCard p {
     color: #161B40;
 }
-.giftCard img {
-    height: 250px;
-    min-width: 100%;
+
+.giftCard h2 {
+    color: #161B40;
+}
+
+.giftCard .card-footer {
+    width: 100%;
+    background-color: #FFFFFF;
 }
 
 
 
 /* PROFILE PAGE */
-.profileContainer p {
-    font-style: HarrietBold, Arial, Helvetica, sans-serif;;
-    color: #FFFFFF;
-}
+
 table {
     background-color: #FFFFFF;
 }
 
 
+
 /* COMMENTS PAGE */
+
+.commentGiftCard {
+    border-color: #43BEE5;
+}
+
 .commentGiftCard p {
     color: #161B40;
 }
-.card-footer{
-    position:absolute;
-    bottom:0;
+
+.commentGiftCard .card-footer{
+    position: absolute;
+    bottom: 0;
+    width: 60%;
     background-color: #FFFFFF;
 }
+
 .comment p {
     color: #161B40;
 }
+
 .modal-content {
     background-color: #161B40;
 }
@@ -339,13 +379,17 @@ table {
 
 
 /* FOOTER */
+
 footer p {
     color: #FFFFFF;
 }
 
 @media screen and (max-width: 500px) {
     .headPage img {
-        height: 140px;
-
+        height: 110px;
     }
-  }
+    .table {
+        font-size: 0.6em;
+    }
+
+}

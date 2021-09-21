@@ -10,7 +10,7 @@ class GiftController extends Controller
 {
     //AFFICHAGE ACCUEIL
     public function index() {
-        $users = User::all();
+        $users = User::with('comments')->get();
         return view('gifts/index', compact('users'));
     }
 
@@ -19,7 +19,7 @@ class GiftController extends Controller
         $for_user_id = $request->for_user_id;
         $gifts = DB::table('gifts')
                     ->join('users', 'gifts.posted_by_user_id', '=', 'users.id')
-                    ->select('gifts.id', 'gifts.name', 'gifts.price', 'gifts.description', 'gifts.image', 'gifts.posted_by_user_id', 'gifts.created_at', 'users.nickname as user_nickname')
+                    ->select('gifts.id', 'gifts.name', 'gifts.price', 'gifts.description', 'gifts.image', 'gifts.posted_by_user_id', 'gifts.created_at', 'users.nickname as user_nickname', 'users.image as user_image')
                     ->where('gifts.for_user_id', '=', $for_user_id)
                     ->get();
         $grantee = DB::table('users')
