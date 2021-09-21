@@ -76,8 +76,9 @@ Cadeaux pour {{$grantee[0]->nickname}}
         @foreach($gifts as $gift)
         <div class="col-md-4 mt-3 mb-2">
             <div class="card giftCard text-center">
-                <img src="{{$gift->image}}" class="card-img-top img-fluid w-auto" alt="Image de {{$gift->name}}">
-                <div class="card-body mb-5">
+                <div class="col-12" style="background-image: url({{$gift->image}}); background-size: contain; background-repeat: no-repeat; height: 250px; background-position: 50% 50%;"></div>
+
+                <div class="card-body mb-4">
                     <h5 class="card-title">{{$gift->name}}</h5>
                     <p class="card-text"><span class="blue">{{$gift->price}} €</span></p>
                     <p class="card-text">{{$gift->description}}</p>
@@ -89,7 +90,7 @@ Cadeaux pour {{$grantee[0]->nickname}}
                 </div>
                 <div class="card-footer">
                     <p class="text-muted small mb-0"><i class="far fa-user pe-1"></i>{{$gift->user_nickname}} <i class="far fa-calendar-alt ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($gift->created_at)->translatedFormat('d F Y à H\hi') }}</p>
-                    @if($gift->posted_by_user_id == auth()->id())
+                    <!--@if($gift->posted_by_user_id == auth()->id())
                     <div class="row">
                         <div class="col-6">
                             <form action="{{route('accueil.edit', $gift->id)}}" method="GET">
@@ -107,7 +108,7 @@ Cadeaux pour {{$grantee[0]->nickname}}
                             </form>
                         </div>
                     </div>
-                    @endif
+                    @endif-->
                 </div>
             </div>
         </div>
