@@ -10,7 +10,7 @@ class GiftController extends Controller
 {
     //AFFICHAGE ACCUEIL
     public function index() {
-        $users = User::with('comments')->get();
+        $users = User::all();
         return view('gifts/index', compact('users'));
     }
 

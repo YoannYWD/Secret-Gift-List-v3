@@ -38,11 +38,4 @@
     </div>
 </div>
 
-<div class="container white">
-    @foreach ($users as $user)
-    {{$user}}
-    @endforeach
-</div>
-
-
 @endsection

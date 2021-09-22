@@ -127,11 +127,43 @@ Commentaires {{$gift[0]->name}}
     </div>
 </div>
 
-
-
-
-
-
-
+<div class="container-fluid white">
+    <div class="container py-5">
+        <!--{{$commentsElo}}-->
+   
+        <div class="row mb-1">
+            @foreach($commentsElo as $comment)
+            <div class="col-12 mb-1">
+                <div class="card comment">
+                    <div class="row">
+                        <div class="col-2 col-xl-1 d-flex align-self-center justify-content-center mt-1 comment">
+                            <img class="mr-3 rounded-circle" src="{{$comment->user->image}}" alt="Generic placeholder image" style="max-width:30px">
+                        </div>
+                        <div class="col-10 col-xl-11">
+                            <p class="mt-2">{{$comment->content}}</i></p>                       
+                            <div class="row d-flex align-items-end">
+                                <div class="col-6 col-xl-10">
+                                    <p class="text-muted extraSmall mb-0"><i class="far fa-user pe-1"></i>{{$comment->user->nickname}} <i class="far fa-clock ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</p>
+                                </div>
+                                @if($comment->user_id == auth()->id())
+                                <div class="col-3 col-xl-1 text-end">
+                                    <button type="submit" class="btn btnEditExtraSmall py-0 px-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}">Modifier</button>                           
+                                </div>
+                                <div class="col-3 col-xl-1 text-end">
+                                    <form action="{{route('commentaires.destroy', $comment->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btnDeleteExtraSmall py-0 px-1">Supprimer</a>
+                                    </form>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+    </div>
+</div>
 
 @endsection

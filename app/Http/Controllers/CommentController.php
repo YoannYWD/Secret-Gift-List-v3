@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Comment;
+use App\Models\Gift;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,8 +21,9 @@ class CommentController extends Controller
                         ->join('gifts', 'gifts.id', '=', 'comments.gift_id')
                         ->select('comments.id', 'comments.content', 'comments.user_id', 'comments.created_at', 'users.nickname as user_nickname', 'users.image as user_image')
                         ->where('comments.gift_id', '=', $gift_id)
-                        ->get();    
-        return view('comments/create', compact('gift', 'comments'));
+                        ->get();
+        $commentsElo = Gift::findOrFail($gift_id)->comments()->get();   
+        return view('comments/create', compact('gift', 'comments', 'commentsElo'));
     }
 
     //ENREGISTRER LE COMMENTAIRE

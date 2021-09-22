@@ -14,12 +14,14 @@ class Comment extends Model
         'gift_id'
     ];
 
+    protected $with = ['user'];
+
     //Cardinalité
-    public function users() {
-        return $this->belongsToMany(User::class, 'comments', 'user_id', 'gift_id');
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id'); //préciser la colonne concernée
     }
-    public function gifts() {
-        return $this->belongsToMany(Gift::class, 'comments', 'gift_id', 'user_id');
+    public function gift() {
+        return $this->belongsTo(Gift::class, 'gift_id');
     }
 }
 
@@ -35,4 +37,6 @@ public function modelesB() : BelongsToMany
 }
 
 https://laravel.sillo.org/les-relations-avec-eloquent-12/
+
+https://laracasts.com/discuss/channels/eloquent/trying-to-get-a-post-with-comments-and-user-name
 */

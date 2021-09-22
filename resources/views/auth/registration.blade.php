@@ -6,7 +6,7 @@
 
 <!-- FORMULAIRE REGISTRATION -->
 <main class="login-form">
-    <div class="container mt-5">
+    <div class="container darkBlue mt-5">
         <div class="row justify-content-center">
             <div class="col-md-4">
 
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="d-grid mx-auto">
-                        <button type="submit" class="btn btnGreen btn-block">S'enregistrer</button>
+                        <button type="submit" class="btn btnGreenBgBlue btn-block">S'enregistrer</button>
                     </div>
                 </form>
 

@@ -7,7 +7,7 @@
 
 <!-- FORMULAIRE LOGIN -->
 <main class="login-form">
-    <div class="container">
+    <div class="container darkBlue">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <p class="intro text-center"><span class="yellow">Connecte</span>-toi !</p>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="d-grid mx-auto">
-                        <button type="submit" class="btn btnGreen btn-block">Se connecter</button>
+                        <button type="submit" class="btn btnGreenBgBlue btn-block">Se connecter</button>
                     </div>
                 </form>
             </div>
