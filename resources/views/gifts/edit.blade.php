@@ -9,25 +9,23 @@ Modification {{$gift->name}}
 @section('content')
 
 <!-- BOUTON RETOUR A LA PAGE CREATION DE CADEAU DU BENEFICIAIRE SELECTIONNE -->
-<div class="container">
+<!--<div class="container">
     <div class="row text-center">
         <form action="{{route('accueil.create')}}" method="GET">
         @csrf
             <input type="hidden" name="for_user_id" value="{{$gift->for_user_id}}">
-            <button type="submit" class="btn btnGreen">Retourner à la liste des cadeaux</button>
+            <button type="submit" class="btn btnGreenBgBlue">Retourner à la liste des cadeaux</button>
         </form>
     </div>
-</div>
+</div>-->
 
 
-<div class="container mt-5">
+<div class="container editGiftContainer mt-5">
     <div class="row mb-4">
 
         <!-- FORMULAIRE MODIFICATION CADEAU -->
-        <div class="col-md-6 offset-3">
-
+        <div class="col-md-8 offset-md-2 col-xl-6 offset-xl-3">
             <p class="intro text-center"><span class="yellow">Modifie</span> ton cadeau</p>
-
             <form action="{{route('accueil.update', $gift->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -64,7 +62,7 @@ Modification {{$gift->name}}
                 <div class="d-grid mx-auto">
                     <input type="hidden" name="posted_by_user_id" value="{{auth()->id()}}">
                     <input type="hidden" name="for_user_id" value="{{$for_user_id}}">
-                    <button type="submit" class="btn btnGreen btn-block">Enregistrer</button>
+                    <button type="submit" class="btn btnGreenBgBlue btn-block">Enregistrer</button>
                 </div>
             </form>
 

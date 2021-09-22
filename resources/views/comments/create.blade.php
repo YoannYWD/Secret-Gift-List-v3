@@ -95,7 +95,7 @@ Commentaires {{$gift[0]->name}}
                         </div>
                         <form action="{{route('commentaires.update', $comment->id)}}" method="POST">
                             <div class="modal-body">
-                                <input type="text" name="content" placeholder="Modifiez votre commentaire" size="44" value="{{$comment->content}}"></input>
+                                <input type="text" name="content" placeholder="Modifiez votre commentaire" value="{{$comment->content}}"></input>
                             </div>
                             <div class="modal-footer">
                                 @csrf
@@ -113,8 +113,7 @@ Commentaires {{$gift[0]->name}}
 
 
 <!-- AJOUTER UN COMMENTAIRE -->
-
-    <div class="row mt-2">
+    <div class="row mt-4">
         <div class="col-12">
             <form method="POST" action="{{route('commentaires.store')}}" enctype="multipart/form-data">
                 @csrf

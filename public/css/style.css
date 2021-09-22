@@ -105,12 +105,10 @@ p.extraSmall {
     font-size: 0.7em;
 }
 
-
 input {
     font-family: HarrietBold, Arial, Helvetica, sans-serif;
     color: #161B40;
 }
-
 
 .alert-success {
     color: #FFFFFF;
@@ -344,6 +342,9 @@ nav a:hover {
 
 table {
     background-color: #FFFFFF;
+}
+.editGiftContainer {
+    color: #FFFFFF;
 }
 
 

@@ -64,7 +64,7 @@
 
 <div class="container mt-5 mb-0">
     <div class="row">
-        <div class="col-4 offset-4 text-center">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-xl-4 offset-xl-4 text-center">
             @if(session()->get("success"))
                 <div class="alert alert-success">
                     {{ session()->get("success") }}
