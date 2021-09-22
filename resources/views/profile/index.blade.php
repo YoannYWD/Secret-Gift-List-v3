@@ -118,7 +118,7 @@ Profil de {{auth()->user()->nickname}}
             
         </div>
         <div class="col-xl-6 mt-5">
-            <p class="introSmall text-center mt-5">Liste des <span class="yellow">cadeaux</span> que tu as proposé</p>
+            <p class="introSmall text-center">Liste des <span class="yellow">cadeaux</span> que tu as proposé</p>
             <table class="table">
                 <thead>
                     <tr>
@@ -140,14 +140,14 @@ Profil de {{auth()->user()->nickname}}
                                 @csrf
                                 <input type="hidden" name="for_user_id" value="{{$gift->for_user_id}}">
                                 <input type="hidden" name="id" value="{{$gift->id}}">
-                                <button type="submit" class="btnEdit">Modifier</button>
+                                <button type="submit" class="btnEdit"><i class="far fa-edit"></i></button>
                         </form>
                     </th>
                     <th>
                         <form action="{{route('accueil.destroy', $gift->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btnDelete">Supprimer</a>
+                                <button type="submit" class="btnDelete"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </th>
                     </tr>

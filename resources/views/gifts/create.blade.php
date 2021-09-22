@@ -12,7 +12,7 @@ Cadeaux pour {{$grantee[0]->nickname}}
 
 <div class="container darkBlue py-5">
     <div class="row">
-        <p class="intro mb-5">Tu trouveras ci dessous plusieurs <span class="yellow">choses</span> : un formulaire pour <span class="blue">proposer</span> un cadeau, la <span class="red">wishlist</span> de {{$grantee[0]->nickname}}, et plus bas la liste de tous les <span class="green">cadeaux</span> proposés !</p>
+        <p class="intro mb-5">Tu trouveras ci dessous plusieurs <span class="yellow">choses</span> : un formulaire pour <span class="blue">proposer</span> un cadeau que tu pourras modifier ou supprimer dans ton profil, la <span class="red">wishlist</span> de {{$grantee[0]->nickname}}, et plus bas la liste de tous les <span class="green">cadeaux</span> proposés !</p>
     </div>
 </div>
 
@@ -25,11 +25,11 @@ Cadeaux pour {{$grantee[0]->nickname}}
                 <div class="row">
                     <div class="col-12">
                         @foreach($wishes as $wish)
-                        <p>1- {{$wish->wish1}}</p>
-                        <p>2- {{$wish->wish2}}</p>
-                        <p>3- {{$wish->wish3}}</p>
-                        <p>4- {{$wish->wish4}}</p>
-                        <p>5- {{$wish->wish5}}</p>
+                        <p><i class="fas fa-gift me-3"></i> {{$wish->wish1}}</p>
+                        <p><span class="blue"><i class="fas fa-gift me-3"></i></span> {{$wish->wish2}}</p>
+                        <p><span class="red"><i class="fas fa-gift me-3"></i></span> {{$wish->wish3}}</p>
+                        <p><span class="green"><i class="fas fa-gift me-3"></i></span> {{$wish->wish4}}</p>
+                        <p><span class="yellow"><i class="fas fa-gift me-3"></i></span> {{$wish->wish5}}</p>
                         @endforeach
                     </div>
                 </div>
@@ -87,11 +87,13 @@ Cadeaux pour {{$grantee[0]->nickname}}
         @foreach($gifts as $gift)
         <div class="col-md-6 col-xl-4 mt-3 mb-2">
             <div class="card giftCard text-center">
-                <div class="col-12" style="background-color: #161B40; background-image: url({{$gift->image}}); background-size: contain; background-repeat: no-repeat; height: 250px; background-position: 50% 50%; border-top-left-radius: 3px; border-top-right-radius: 3px">
+
+                <div class="col-12" style="background-image: linear-gradient(rgba(22, 27, 64, 0.8),rgba(22, 27, 64, 0.8)), url({{$gift->image}}); background-size: cover; background-repeat: no-repeat; height: 250px; background-position: 50% 50%; border-top-left-radius: 3px; border-top-right-radius: 3px">
+                <div class="col-12" style="background-image: url({{$gift->image}}); background-size: contain; background-repeat: no-repeat; height: 250px; background-position: 50% 50%; border-top-left-radius: 3px; border-top-right-radius: 3px"></div>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title">{{$gift->name}}</h2>
-                    <p class="card-text"><span class="blue">{{$gift->price}} €</span></p>
+                    <h3 class="card-text"><span class="blue">{{$gift->price}} €</span></h3>
                     <p class="card-text">{{$gift->description}}</p>
                     <form action="{{route('commentaires.create')}}" method="GET">
                         @csrf
@@ -100,7 +102,7 @@ Cadeaux pour {{$grantee[0]->nickname}}
                     </form>
                 </div>
                 <div class="card-footer">
-                    <p class="text-muted small mb-0"><img class="mr-3 rounded-circle me-1" src="{{$gift->user_image}}" alt="Generic placeholder image" style="max-width:30px">{{$gift->user_nickname}} <i class="far fa-calendar-alt ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($gift->created_at)->translatedFormat('d F Y à H\hi') }}</p>
+                    <p class="text-muted small mb-0"><img class="mr-3 rounded-circle me-1" src="{{$gift->user_image}}" alt="Generic placeholder image" style="max-width:30px">{{$gift->user_nickname}} <span class="red"><i class="far fa-calendar-alt ps-3 pe-1"></i></span>{{ \Carbon\Carbon::parse($gift->created_at)->translatedFormat('d F Y à H\hi') }}</p>
                     <!--@if($gift->posted_by_user_id == auth()->id())
                     <div class="row">
                         <div class="col-6">
@@ -115,7 +117,7 @@ Cadeaux pour {{$grantee[0]->nickname}}
                             <form action="{{route('accueil.destroy', $gift->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btnDeleteSmall px-2 py-0">Supprimer</a>
+                                <button type="submit" class="btn btnDeleteSmall px-2 py-0">Supprimer</button>
                             </form>
                         </div>
                     </div>

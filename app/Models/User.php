@@ -51,9 +51,9 @@ class User extends Authenticatable
     ];
 
     //Cardinalité
-    /*public function gifts() {
-        return $this->hasMany(Gift::class, 'users', 'id', 'posted_by_user_id');
-    }*/
+    public function gifts() {
+        return $this->hasMany(Gift::class);
+    }
     public function comments() {
         return $this->hasMany(Comment::class);
     }

@@ -19,9 +19,9 @@ class Gift extends Model
     ];
 
     //Cardinalité
-    /*public function user() {
-        return $this->belongsTo(User::class, 'gifts', 'id', 'posted_by_user_id');
-    }*/
+    public function user() {
+        return $this->belongsTo(User::class, 'posted_by_user_id');
+    }
     public function comments() {
         return $this->hasMany(Comment::class);
     }

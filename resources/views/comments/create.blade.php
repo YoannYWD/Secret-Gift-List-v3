@@ -29,17 +29,19 @@ Commentaires {{$gift[0]->name}}
             <div class="card commentGiftCard">
                 <div class="row">
                     <div class="col-md-4">
-                        <div style="background-color: #161B40; background-image: url({{$gift[0]->image}}); background-size: contain; background-repeat: no-repeat; height: 300px; background-position: 50% 50%; border-top-left-radius: 3px; border-bottom-left-radius: 3px">
+                        <div style="background-image: linear-gradient(rgba(22, 27, 64, 0.8),rgba(22, 27, 64, 0.8)), url({{$gift[0]->image}}); background-size: cover; background-repeat: no-repeat; height: 300px; border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
+                            <div style="background-image: url({{$gift[0]->image}}); background-size: contain; background-repeat: no-repeat; height: 300px; background-position: 50% 50%; border-top-left-radius: 3px; border-bottom-left-radius: 3px">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{$gift[0]->name}}</h5>
-                            <p><span class="blue">{{$gift[0]->price}}€</span></p>
+                            <h2 class="card-title">{{$gift[0]->name}}</h2>
+                            <h3><span class="blue">{{$gift[0]->price}}€</span></h3>
                             <p>{{$gift[0]->description}}</p>
                         </div>
                         <div class="card-footer">
-                            <p class="text-muted small mb-0"><img class="mr-3 rounded-circle me-2" src="{{$gift[0]->user_image}}" alt="Generic placeholder image" style="max-width:30px">{{$gift[0]->user_nickname}}<i class="far fa-calendar-alt ps-3 pe-1"></i> {{ \Carbon\Carbon::parse($gift[0]->created_at)->translatedFormat('d F Y à H\hi') }}</p>
+                            <p class="text-muted small mb-0"><img class="mr-3 rounded-circle me-2" src="{{$gift[0]->user_image}}" alt="Generic placeholder image" style="max-width:30px">{{$gift[0]->user_nickname}}<span class="red"><i class="far fa-clock ps-3 pe-1"></i></span>{{ \Carbon\Carbon::parse($gift[0]->created_at)->diffForHumans()}}</p>
                             <p class="text-muted small mb-0">
                         </div>
                     </div>
@@ -56,24 +58,24 @@ Commentaires {{$gift[0]->name}}
         <div class="col-12 mb-1">
             <div class="card comment">
                 <div class="row">
-                    <div class="col-2 col-xl-1 d-flex align-self-center justify-content-center mt-1 comment">
+                    <div class="col-2 col-xl-1 d-flex align-self-center justify-content-center mt-1 p-0 comment">
                         <img class="mr-3 rounded-circle" src="{{$comment->user_image}}" alt="Generic placeholder image" style="max-width:30px">
                     </div>
                     <div class="col-10 col-xl-11">
                         <p class="mt-2">{{$comment->content}}</i></p>                       
                         <div class="row d-flex align-items-end">
-                            <div class="col-6 col-xl-10">
-                                <p class="text-muted extraSmall mb-0"><i class="far fa-user pe-1"></i>{{$comment->user_nickname}} <i class="far fa-clock ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</p>
+                            <div class="col-8 col-xl-10">
+                                <p class="text-muted extraSmall mb-0"><span class="yellow"><i class="far fa-user pe-1"></i></span>{{$comment->user_nickname}} <span class="red"><i class="far fa-clock ps-3 pe-1"></i></span>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</p>
                             </div>
                             @if($comment->user_id == auth()->id())
-                            <div class="col-3 col-xl-1 text-end">
-                                <button type="submit" class="btn btnEditExtraSmall py-0 px-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}">Modifier</button>                           
+                            <div class="col-2 col-xl-1 text-end">
+                                <button type="submit" class="btn btnEditExtraSmall py-0 px-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}"><i class="far fa-edit"></i></button>                           
                             </div>
-                            <div class="col-3 col-xl-1 text-end">
+                            <div class="col-2 col-xl-1 text-start">
                                 <form action="{{route('commentaires.destroy', $comment->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btnDeleteExtraSmall py-0 px-1">Supprimer</a>
+                                    <button type="submit" class="btn btnDeleteExtraSmall py-0 px-1"><i class="far fa-trash-alt"></i></button>
                                 </form>
                             </div>
                             @endif
@@ -93,13 +95,13 @@ Commentaires {{$gift[0]->name}}
                         </div>
                         <form action="{{route('commentaires.update', $comment->id)}}" method="POST">
                             <div class="modal-body">
-                                <textarea type="text" name="content" placeholder="Modifiez votre commentaire" rows="3" cols="42" value="{{$comment->content}}"></textarea>
+                                <input type="text" name="content" placeholder="Modifiez votre commentaire" size="44" value="{{$comment->content}}"></input>
                             </div>
                             <div class="modal-footer">
                                 @csrf
                                 @method('PATCH')                        
                                 <button type="button" class="btn btnRed" data-bs-dismiss="modal">Fermer</button>
-                                <button type="submit" class="btn btnGreen">Modifier</button>
+                                <button type="submit" class="btn btnGreenBgBlue">Modifier</button>
                             </div>
                         </form>
                     </div>
@@ -127,9 +129,9 @@ Commentaires {{$gift[0]->name}}
     </div>
 </div>
 
-<div class="container-fluid white">
+<!--<div class="container-fluid white">
     <div class="container py-5">
-        <!--{{$commentsElo}}-->
+        {{$commentsElo}}
    
         <div class="row mb-1">
             @foreach($commentsElo as $comment)
@@ -142,18 +144,18 @@ Commentaires {{$gift[0]->name}}
                         <div class="col-10 col-xl-11">
                             <p class="mt-2">{{$comment->content}}</i></p>                       
                             <div class="row d-flex align-items-end">
-                                <div class="col-6 col-xl-10">
-                                    <p class="text-muted extraSmall mb-0"><i class="far fa-user pe-1"></i>{{$comment->user->nickname}} <i class="far fa-clock ps-3 pe-1"></i>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</p>
+                                <div class="col-8 col-xl-10">
+                                    <p class="text-muted extraSmall mb-0"><span class="yellow"><i class="far fa-user pe-1"></i></span>{{$comment->user->nickname}} <span class="red"><i class="far fa-clock ps-3 pe-1"></i></span>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</p>
                                 </div>
                                 @if($comment->user_id == auth()->id())
-                                <div class="col-3 col-xl-1 text-end">
-                                    <button type="submit" class="btn btnEditExtraSmall py-0 px-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}">Modifier</button>                           
+                                <div class="col-2 col-xl-1 text-end">
+                                    <button type="submit" class="btn btnEditExtraSmall py-0 px-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}"><i class="far fa-edit"></i></button>                           
                                 </div>
-                                <div class="col-3 col-xl-1 text-end">
+                                <div class="col-2 col-xl-1 text-start">
                                     <form action="{{route('commentaires.destroy', $comment->id)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btnDeleteExtraSmall py-0 px-1">Supprimer</a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btnDeleteExtraSmall py-0 px-1"><i class="far fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                                 @endif
@@ -164,6 +166,6 @@ Commentaires {{$gift[0]->name}}
             </div>
             @endforeach
     </div>
-</div>
+</div>-->
 
 @endsection
