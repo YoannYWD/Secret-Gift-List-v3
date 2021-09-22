@@ -29,8 +29,8 @@ Commentaires {{$gift[0]->name}}
             <div class="card commentGiftCard">
                 <div class="row">
                     <div class="col-md-4">
-                        <div style="background-image: linear-gradient(rgba(22, 27, 64, 0.8),rgba(22, 27, 64, 0.8)), url({{$gift[0]->image}}); background-size: cover; background-repeat: no-repeat; height: 300px; border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
-                            <div style="background-image: url({{$gift[0]->image}}); background-size: contain; background-repeat: no-repeat; height: 300px; background-position: 50% 50%; border-top-left-radius: 3px; border-bottom-left-radius: 3px">
+                        <div style="background-image: linear-gradient(rgba(22, 27, 64, 0.7),rgba(22, 27, 64, 0.7)), url({{$gift[0]->image}}); background-size: cover; background-repeat: no-repeat; height: 300px; border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
+                            <div style="background-image: url({{$gift[0]->image}}); background-size: contain; background-repeat: no-repeat; height: 300px; background-position: 50% 50%; border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ Commentaires {{$gift[0]->name}}
                         </div>
                         <form action="{{route('commentaires.update', $comment->id)}}" method="POST">
                             <div class="modal-body">
-                                <input type="text" name="content" placeholder="Modifiez votre commentaire" value="{{$comment->content}}"></input>
+                                <input type="text" name="content" class="form-control" placeholder="Modifiez votre commentaire" value="{{$comment->content}}"/>
                             </div>
                             <div class="modal-footer">
                                 @csrf

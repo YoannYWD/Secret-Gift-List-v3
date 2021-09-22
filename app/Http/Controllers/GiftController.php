@@ -35,6 +35,10 @@ class GiftController extends Controller
 
     //ENREGISTREMENT CADEAU
     public function store(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
+        ]);
         $imageName = "";
         if ($request->image) {
             $imageName = time() . "." . $request->image->extension();
@@ -42,16 +46,20 @@ class GiftController extends Controller
         }
         $newGift = new Gift;
         $newGift->name = $request->name;
-        $newGift->price = $request->price;
-        $newGift->description = $request->description;
+        if ($request->price) {
+            $newGift->price = $request->price;
+        } 
+        if ($request->description) {
+            $newGift->description = $request->description;
+        }
         $newGift->image = '/images/' . $imageName;
         $newGift->posted_by_user_id = auth()->id();
         $newGift->for_user_id = $request->for_user_id;
         $newGift->save();
     
         return back()
-                         ->with('success', 'Cadeau enregistré !')
-                         ->with('image', $imageName);
+                ->with('success', 'Cadeau enregistré !')
+                ->with('image', $imageName);
     }
 
     //AFFICHAGE PAGE EDITER
@@ -64,7 +72,8 @@ class GiftController extends Controller
     //ENREGISTREMENT DES MODIFICATIONS 
     public function update(Request $request, $id) {
         $updateGift = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|max:10000'
         ]);
         $updateGift = $request->except(['_token', '_method']);
 

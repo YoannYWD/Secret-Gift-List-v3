@@ -27,7 +27,7 @@
                                 <form action="{{route('accueil.create')}}" method="GET">
                                     @csrf
                                     <input type="hidden" name="for_user_id" value="{{$user->id}}">
-                                    <button type="submit" class="btn btnDarkBlue"><p class="mb-0">Voir les cadeaux</p></button>
+                                    <button type="submit" class="btn btnDarkBlue">Voir les cadeaux</button>
                                 </form>
                             </div>
                         </div>

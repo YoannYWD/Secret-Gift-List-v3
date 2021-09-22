@@ -13,6 +13,9 @@
     <!-- STYLE -->
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }} ">
 
+    <!-- JS -->
+    <script src="{{ URL::asset('js/script.js') }} " defer></script>
+
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
 
@@ -20,6 +23,8 @@
 </head>
 <body>
 
+@guest
+@else
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <!-- <a class="navbar-brand mr-auto" href="{{route('accueil.index')}}">SGL</a> -->
@@ -27,36 +32,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            @guest
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Se connecter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('registration')}}">S'enregistrer</a>
-                </li>
-            </ul>
-            @else
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('accueil.index')}}">Accueil</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('mon-profil.index')}}">Mon profil</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <span class="navbar-text">
-                    Bonjour {{Auth::user()->nickname}},
-                </span>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('signout')}}">se déconnecter</a>
                 </li>
             </ul>
-            @endguest
         </div>
     </div>
 </nav>
+@endguest
 
 <div class="container mb-5 headPage text-center">
     <img src="/images/logo.png" alt="Logo">
@@ -103,5 +96,8 @@
     <!-- BOOTSTRAP -->   
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </body>
 </html>

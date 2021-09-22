@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <p class="intro text-center"><span class="yellow">Connecte</span>-toi !</p>
-                <form action="{{route('userLogin')}}" method="POST">
+                <form action="{{route('userLogin')}}" method="POST" class="mb-3">
                     @csrf
                     <!-- email -->
                     <div class="mb-3">
@@ -41,6 +41,7 @@
                         <button type="submit" class="btn btnGreenBgBlue btn-block">Se connecter</button>
                     </div>
                 </form>
+                Pas encore membre ? <a href="{{route('registration')}}"><span class="yellow">Enregistre</span>-toi</a>.
             </div>
         </div>
     </div>

@@ -15,6 +15,7 @@ INDEX
 - IMPORTS
 - GENERAL
 - BOUTONS
+- LOGIN / REGISTRATION
 - NAVBAR
 - HOME PAGE
 - PROFILE PAGE
@@ -256,6 +257,14 @@ button.btnDeleteExtraSmall:hover {
 }
 
 
+/* LOGIN / REGISTRATION */
+.login-form p {
+    text-align: justify;
+}
+.login-form a {
+    color: #FFFFFF;
+}
+
 
 /* NAVBAR */
 
@@ -338,7 +347,12 @@ nav a:hover {
 
 
 
+
 /* PROFILE PAGE */
+
+.profileContainer img {
+    max-height: 200px;
+}
 
 table {
     background-color: #FFFFFF;
@@ -431,7 +445,7 @@ footer p {
     }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1199px) {
+@media screen and (min-width: 992px) {
     .commentGiftCard .card-footer{
         position: absolute;
         bottom: 0;

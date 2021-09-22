@@ -24,7 +24,7 @@ class UserAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/accueil')
-                             ->with('success', 'Tu es connecté !');
+                             ->with('success', 'Tu es connecté ! Bonjour ' . Auth::user()->nickname);
         }
 
         return redirect('/login')->with('alert', 'Ton email ou mot de passe est incorrect.');
@@ -40,8 +40,16 @@ class UserAuthController extends Controller
             'firstname' => 'required',
             'nickname' => 'required',
             'email' => 'required|email|unique:users',
-            'image' => 'required',
-            'password' => 'required|min:6'
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+            'password' => [
+                'required',
+                'string',
+                'min:8',             // must be at least 10 characters in length
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+                'regex:/[@$!%*#?&]/', // must contain a special character
+            ],
         ]);
 
         $data = $request->all();
@@ -67,12 +75,12 @@ class UserAuthController extends Controller
         ]);
     }
 
-    public function dashboard() {
+    /*public function dashboard() {
         if(Auth::check()) {
             return view('groups/index');
         }
         return redirect('auth/login')->with('alert', "Vous n'êtes pas connecté.");
-    }
+    }*/
 
     public function signOut() {
         Session::flush();

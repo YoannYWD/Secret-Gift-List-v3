@@ -12,14 +12,14 @@ Profil de {{auth()->user()->nickname}}
 <div class="container-fluid white">
     <div class="container py-5">
         <div class="row">
-            <p class="intro">Tu peux ici <span class="red">modifier</span> toutes les informations que tu as <span class="green">enregistrées</span>. N'oublie surtout pas de compléter ta <span class="yellow">wishlist</span> pour aider ta famille !</p>
+            <p class="intro">Tu peux ici <span class="red">modifier</span> toutes les informations que tu as <span class="green">enregistrées</span>, et modifier ou supprimer les <span class="blue">cadeaux</span> que tu as proposés. N'oublie surtout pas de compléter ta <span class="yellow">wishlist</span> pour aider ta famille !</p>
         </div>
     </div>
 </div>
 
-<div class="container darkBlue py-5">
+<div class="container profileContainer darkBlue pt-5">
     <div class="row mb-4">
-        <div class="col-xl-6 mt-5">
+        <div class="col-xl-6 pb-5">
             <p class="introSmall text-center">Tes <span class="blue">informations</span></p>
             <form action="{{route('mon-profil.update', auth()->id())}}" method="POST" enctype="multipart/form-data" class="mt-5 mb-4">
                 @csrf
@@ -117,7 +117,7 @@ Profil de {{auth()->user()->nickname}}
             </form>
             
         </div>
-        <div class="col-xl-6 mt-5">
+        <div class="col-xl-6">
             <p class="introSmall text-center">Liste des <span class="yellow">cadeaux</span> que tu as proposé</p>
             <table class="table">
                 <thead>

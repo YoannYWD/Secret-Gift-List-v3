@@ -16,8 +16,8 @@ class CreateGiftsTable extends Migration
         Schema::create('gifts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->float('price');
+            $table->text('description')->nullable();
+            $table->float('price')->nullable();
             $table->string('image');
             $table->unsignedBigInteger('for_user_id');
             $table->foreign('for_user_id')->references('id')->on('users')->onDelete('cascade');

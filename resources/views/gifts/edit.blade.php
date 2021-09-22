@@ -57,6 +57,9 @@ Modification {{$gift->name}}
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Image</label>
                     <input class="form-control" type="file" name="image">
+                    @if($errors->has('image'))
+                    <span class="text-danger">{{$errors->first('image')}}</span>
+                    @endif
                 </div>
 
                 <div class="d-grid mx-auto">
